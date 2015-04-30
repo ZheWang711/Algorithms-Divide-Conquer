@@ -61,11 +61,8 @@ def ClosestPair(pts):
     # call the true function
     return closestpair(Px, Py)
 
-
-
 def distence(p1, p2):
     return math.sqrt((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2)
-
 
 def closestpair(Px, Py):
     n = len(Px)
@@ -89,14 +86,12 @@ def closestpair(Px, Py):
                 return p2, p3
             else:
                 return p1, p3
-
     #   form Qx, Qy, Rx, Ry
     nleft = n//2 + 1
     nright = n - n//2 - 1
     Qx = [Px[i] for i in range(nleft)]
     Rx = [Px[nleft + delta] for delta in range(nright)]
     middle = Px[nleft-1][0]     # middle X
-
     indexPx = [0 for i in range(n)]
     for i in range(n):
         indexPx[Px[i][2]] = i
@@ -119,7 +114,6 @@ def closestpair(Px, Py):
         else:
             Ry[j] = Py[k]
             j += 1
-
     #   (p1,q1) = closestpair(Qx, Qy)
     #       (p2, q2) = closestpair(Rx, Ry)
     #   (p3, q3) = closestsplitpair(Px, Py)
@@ -151,9 +145,6 @@ def closestsplitpair(Px, Py, smallD):
     left = n//2
     middleX = Px[left-1][0]
     Sy = [Py[i] for i in range(n) if abs(Py[i][0] - middleX) < smallD]
-
-
-
     best = smallD
     bestPair = ((0, 0), (0, 0))
     for i in range(0, len(Sy)-1, 1):
@@ -162,7 +153,6 @@ def closestsplitpair(Px, Py, smallD):
             if d < best:
                 best = d
                 bestPair = Sy[i], Sy[i+j]
-
     return bestPair
 
 import random
